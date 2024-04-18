@@ -25,6 +25,19 @@ print(type(german_tokenizer))
 print(german_default_st == german_sentences)
 
 # %%
+# PunkSentenceTokenizer
+# Verify the type of german_tokenizer
+# Should be PunktSentenceTokenizer
+print(type(german_tokenizer))
+
+# %%
 import numpy as np
 # Print the first 5 sentences
 print(np.array(german_sentences[:5]))
+
+# %%
+# RegexpTokenizer
+SENTENCE_TOKENS_PATTERN = r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s'
+regex_st = nltk.tokenize.RegexpTokenizer(pattern=SENTENCE_TOKENS_PATTERN, gaps=True)
+sample_sentence = regex_st.tokenize(german_text)
+print(np.array(sample_sentence[:5]))
